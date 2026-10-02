@@ -1,0 +1,174 @@
+#include <stdio.h>
+#include <conio.h>
+int main()
+{
+char nom[50];
+char prenom[50];
+int age;
+float poids, taille;
+int respiration;
+int spo2;
+int tension;
+int pulse;
+int conscience;
+float temperature;
+int score = 0;
+printf("===== MEDASSIST =====\n\n");
+printf("Nom du patient : ");
+scanf("%s", nom);
+printf("Prénom du patient: ");
+scanf("%s", prenom);
+printf("Age : ");
+scanf("%d", &age);
+printf("Poids (kg) : ");
+scanf("%f", &poids);
+printf("Taille (m) : ");
+scanf("%f", &taille);
+printf("\n===== INFORMATIONS DU PATIENT =====\n");
+printf("Nom : %s\n", nom);
+printf("Age : %d ans\n", age);
+printf("Poids : %.1f kg\n", poids);
+printf("Taille : %.2f m\n", taille);
+clrscr();
+printf("SCORE PREDICTIF DE DETERIORATION\n");
+printf("--------------------------------\n\n");
+printf("Frequence respiratoire : ");
+scanf("%d", &respiration);
+printf("SpO2 : ");
+scanf("%d", &spo2);
+printf("Pression systolique : ");
+scanf("%d", &tension);
+printf("Pouls : ");
+scanf("%d", &pulse);
+printf("Temperature : ");
+scanf("%f", &temperature);
+printf("Conscience (1=Alert, 0=Non Alert) : ");
+scanf("%d", &conscience);
+    /* Frequence respiratoire */
+
+if (respiration <=8)
+        score = score + 3;
+	else if (respiration <= 11)
+
+        score = score + 1;
+   else if (respiration <= 20)
+        score = score + 0;
+  	else if (respiration <= 24)
+        score = score + 2;
+   else
+
+        score = score + 3;
+
+    /* SpO2 */
+
+if (spo2 >= 96)
+
+		  score = score + 0;
+	else if (spo2 >= 94)
+
+        score = score + 1;
+
+   else if (spo2 >= 92)
+
+        score = score + 2;
+
+   else
+
+        score = score + 3;
+
+    /* Pression systolique */
+
+if (tension <= 90)
+
+        score = score + 3;
+
+	else if (tension <= 100)
+
+        score = score + 2;
+
+  	else if (tension <= 110)
+
+        score = score + 1;
+  	else
+
+        score = score + 0;
+
+    /* Pouls */
+if (pulse <= 40)
+
+        score = score + 3;
+
+	else if (pulse <= 50)
+
+        score = score + 1;
+
+   else if (pulse <= 90)
+
+        score = score + 0;
+
+   else if (pulse <= 110)
+
+        score = score + 1;
+
+   else if (pulse <= 130)
+
+        score = score + 2;
+
+   else
+
+        score = score + 3;
+
+    /* Temperature */
+
+if (temperature <= 35.0)
+
+        score = score + 3;
+
+	else if (temperature <= 36.0)
+
+        score = score + 1;
+
+   else if (temperature <= 38.0)
+
+        score = score + 0;
+
+   else if (temperature <= 39.0)
+
+        score = score + 1;
+
+   else
+
+        score = score + 2;
+
+    /* Conscience */
+
+if (conscience == 1)
+
+        score = score + 0;
+
+	else
+
+        score = score + 3;
+
+printf("\n-----------------------------\n");
+
+printf("SCORE TOTAL = %d\n", score);
+
+printf("-----------------------------\n");
+
+if (score == 0)
+
+		printf("Score faible\n");
+
+	else if (score <= 4)
+
+   	printf("Surveillance du patient\n");
+   else
+
+        printf("Evaluation medicale necessaire\n");
+
+getch();
+
+return 0;
+
+}
